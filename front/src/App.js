@@ -6,7 +6,7 @@ import { Home } from './pages'
 
 const App = () => {
   return (
-    <div className='bg-gray-800'>
+    <div className='dark:bg-gray-900'>
       <Navbar/>
       <Routes>
         <Route path='/' element={<Home/>} />
