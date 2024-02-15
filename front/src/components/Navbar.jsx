@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import {IoMdSearch} from 'react-icons/io'
-import {FaShoppingCart, FaCaretDown} from 'react-icons/fa'
+import {FaShoppingCart, FaCaretDown, FaRegUser} from 'react-icons/fa'
 
-import {Darkmode} from '../components'
+// import {Darkmode} from '../components'
 
 const MenuLinks = [
     {
@@ -98,8 +98,10 @@ const Navbar = () => {
                             </div>
                         </button>
                         {/* Dark mode section */}
-                        <div>
-                            <Darkmode />
+                        <div className='text-xl p-3'>
+                            <Link to='/profile'>
+                                < FaRegUser />
+                            </Link>
                         </div>
                     </div>
                 </div>
