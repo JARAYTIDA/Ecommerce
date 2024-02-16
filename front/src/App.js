@@ -2,7 +2,7 @@ import React from 'react'
 import { Routes, Route } from 'react-router-dom'
 
 import { Footer, Navbar } from './components'
-import { Cart, Details, Details2, Home, Payment } from './pages'
+import { Cart, Details, Details2, Home, Payment, Products_List } from './pages'
 
 const App = () => {
   return (
@@ -14,6 +14,7 @@ const App = () => {
         <Route path='/cart' element={<Cart/>} />
         <Route path='/details' element={<Details/>} />
         <Route path='/details2' element={<Details2/>} />
+        <Route path='/products' element={<Products_List/>} />
       </Routes>
       < Footer />
     </div>
