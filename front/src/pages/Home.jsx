@@ -1,5 +1,5 @@
 import React from 'react'
-import { Banner1, BestSellerProducts, Categories, Footer, HomeElement } from '../components'
+import { Banner1, BestSellerProducts, Categories, HomeElement } from '../components'
 
 import Img1 from '../assets/hero/headphone.png'
 import Img2 from '../assets/category/smartwatch2-removebg-preview.png'
@@ -34,7 +34,7 @@ const Home = () => {
       < Banner1 data = {bannerData}/>
       < BestSellerProducts />
       < Banner1 data = {bannerData2}/>
-      < Footer />
+      {/* < Footer /> */}
     </>
   )
 }

@@ -23,7 +23,7 @@ const FooterLinks = [
 
 const Footer = () => {
     return (
-        <div className='dark:bg-gray-950 bg-gray-100'>
+        <div className='dark:bg-gray-950 bg-gray-200'>
             <div className="container">
                 <div className="grid md:grid-cols-3 pb-20 pt-5">
                     <div className='py-8 px-4'>

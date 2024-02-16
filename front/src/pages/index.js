@@ -1,1 +1,5 @@
 export {default as Home} from './Home'
+export {default as Payment} from './Payment'
+export {default as Cart} from './Cart'
+export {default as Details} from './Details'
+export {default as Details2} from './Details2'

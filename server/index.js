@@ -3,23 +3,19 @@ import cors from 'cors'
 import mongoose from 'mongoose';
 import dotenv from 'dotenv'
 import bodyParser from 'body-parser'
-import { auth_routes } from './routes/index.js';
 
 //local imports
-
+import { auth_routes } from './routes/index.js';
 
 dotenv.config();
 const app = express();
 
 const CONNECTION_URL = process.env.CONNECTION_URL;
-console.log(CONNECTION_URL)
-
-const connection_url_1 = '';
-const connection_url_2 = '';
+console.log(CONNECTION_URL);
 
 const port = 5000;
 
-
+app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true

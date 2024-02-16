@@ -26,47 +26,42 @@ export const signup = async (req, res) => {
     const hash2 = crypto.createHash(ENCRYPTION_METHOD);
     const  user = req.body;
     const data = hash1.update(user.password, 'utf-8');
-//Creating the hash in the required format
+    //Creating the hash in the required format
     const gen_hash= data.digest('hex');
     user.password = gen_hash;
     const ticket = hash2.update(`${user.email_id}+${user.user_id}_${SECRET_ENCRYPTION}`, "utf-8");
     const ticket_gen_hash = ticket.digest('hex');
     user.ticket = ticket_gen_hash;
     user.verified = false;
+    user.cart = [];
     const newUser = new userDetails(user);
 
-    console.log(user);
+    console.log(newUser);
     // res.status(200).json(user);
 
     try {
         await newUser.save();
-
-
         //verification email 
 
-        // console.log("sending email ......")
-        // const mailOptions = {
-        //     from: `"${ADMIN_NAME}" <${ADMIN_EMAIL}>`,
-        //     to: `${user.email_id}`,
-        //     subject: 'Please Verify you account',
-        //     text: `please click on this link in order to verify you account  http://localhost:3000/verification?ticket=${ticket_gen_hash}  `,
-        // };
+    //     console.log("sending email ......")
+    //     const mailOptions = {
+    //         from: `"${ADMIN_NAME}" <${ADMIN_EMAIL}>`,
+    //         to: `${user.email_id}`,
+    //         subject: 'Please Verify you account',
+    //         text: `please click on this link in order to verify you account  http://localhost:3000/verification?ticket=${ticket_gen_hash}  `,
+    //     };
         
-        //   // Send mail
-        // transporter.sendMail(mailOptions, (error, info) => {
-        //     if (error) {
-        //         console.log('Error occurred:', error.message);
-        //         res.status(500).send('Error sending email');
-        //         return;
-        //     }
-        //     console.log('Email sent successfully!');
-        //     console.log('Message ID:', info.messageId);
-        //     res.send('Email sent successfully!');
-        // });
-
-
-
-
+    //       // Send mail
+    //     transporter.sendMail(mailOptions, (error, info) => {
+    //         if (error) {
+    //             console.log('Error occurred:', error.message);
+    //             res.status(500).send('Error sending email');
+    //             return;
+    //         }
+    //         console.log('Email sent successfully!');
+    //         console.log('Message ID:', info.messageId);
+    //         res.send('Email sent successfully!');
+    //     });
         
         res.status(201).json(newUser);
     } catch (error) {
