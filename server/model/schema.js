@@ -6,6 +6,7 @@ const user = mongoose.Schema({
     email_id: String,
     ticket: String,
     verified: Boolean,
+    forgotPass: String,
     createdAt: {
         type: Date,
         default: new Date()

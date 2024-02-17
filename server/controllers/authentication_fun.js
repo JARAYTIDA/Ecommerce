@@ -118,11 +118,77 @@ export const sendEmail = async (req, res) => {
     console.log("sending email ......")
     const mailOptions = {
         from: `"${ADMIN_NAME}" <${ADMIN_EMAIL}>`,
-        to: 'rajadityakumawat2@gmail.com',
+        to: 'rudrakshnamdeo@gmail.com',
         subject: 'Test Email 2',
-        text: 'This is a test email sent from Server!',
+        text: 'Please reviw you order details',
+        text:'This is a test mail form server of mohhammad',
+        html: `
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Table</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        img {
+            width: 300px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Sample HTML Table for Email</h2>
+
+<table>
+    <tr>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Total</th>
+    </tr>
+    <tr>
+        <td><img src="https://i.postimg.cc/tghbJjN7/pexels-web-donut-19090.jpg"/></td>
+        <td>$10</td>
+        <td>2</td>
+        <td>$20</td>
+    </tr>
+    <tr>
+        <td><img src="https://i.postimg.cc/RZ4Qy1p8/pexels-nathan-j-hilton-4277508.jpg"/></td>
+        <td>$15</td>
+        <td>1</td>
+        <td>$15</td>
+    </tr>
+    <tr>
+        <td colspan="3">Subtotal</td>
+        <td>$35</td>
+    </tr>
+    <tr>
+        <td colspan="3">Tax</td>
+        <td>$5</td>
+    </tr>
+    <tr>
+        <td colspan="3">Total</td>
+        <td>$40</td>
+    </tr>
+</table>
+
+</body>
+</html>`,
+
     };
-    
       // Send mail
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
