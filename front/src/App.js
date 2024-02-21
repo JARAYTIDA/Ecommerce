@@ -2,7 +2,7 @@ import React from 'react'
 import { Routes, Route } from 'react-router-dom'
 
 import { Footer, Navbar } from './components'
-import { Cart, Details, Details2, ForgotPass, Home, Login, Payment, Products_List, ResetPassword, SignUp } from './pages'
+import { Cart, Details, Details2, EmailVerificationAsk, ForgotPass, Home, Login, Payment, Products_List, ResetPassConfirmation, ResetPassEmailPage, ResetPassword, SignUp, VerifyEmail } from './pages'
 
 const App = () => {
   return (
@@ -14,11 +14,15 @@ const App = () => {
         <Route path='/cart' element={<Cart/>} />
         <Route path='/details' element={<Details/>} />
         <Route path='/details2' element={<Details2/>} />
-        <Route path='/products' element={<Products_List/>} />
+        <Route path='/products/:product' element={<Products_List/>} />
         <Route path='/login' element={<Login/>} />
         <Route path='/signup' element={<SignUp/>} />
         <Route path='/forgot-password' element={<ForgotPass/>} />
-        <Route path='/reset-password' element={<ResetPassword/>} />
+        <Route path='/reset-password/:data' element={<ResetPassword/>} />
+        <Route path='/reset-password-page' element={<ResetPassEmailPage/>} />
+        <Route path='/verify-email' element={<EmailVerificationAsk/>} />
+        <Route path='/verification' element={<VerifyEmail/>} />
+        <Route path='/reset-password-confirmation' element={<ResetPassConfirmation/>} />
       </Routes>
       < Footer />
     </div>

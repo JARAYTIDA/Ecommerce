@@ -5,13 +5,14 @@ const user = mongoose.Schema({
     password: String,
     email_id: String,
     ticket: String,
-    verified: Boolean,
     forgotPass: String,
+    verified: Boolean,
+    resetPassReq: Boolean,
+    cart: [Object],
     createdAt: {
         type: Date,
         default: new Date()
     },
-    cart: [String],
 })
 
 const userDetails = mongoose.model('user_details', user);

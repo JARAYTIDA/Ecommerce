@@ -1,7 +1,7 @@
 import userDetails from "../model/schema.js";
 
 export const email_verification = async (req, res) => {
-    const data = req.params;
+    const data = req.query;
     try{
 
         await userDetails.updateOne(

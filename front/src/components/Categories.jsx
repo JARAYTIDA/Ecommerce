@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import Img1 from '../assets/category/earphone.png'
 import Img2 from '../assets/category/watch.png'
@@ -21,7 +22,9 @@ const Categories = () => {
                                 <p className='mb-[2px] text-gray-400'>Enjoy</p>
                                 <p className='text-2xl font-semibold mb-[2px]'>With</p>
                                 <p className='text-4xl xl:text-5xl front-blod opacity-20 mb-2'>Earphone</p>
-                                < HomeElementButton text='Browse' bgColor='bg-primary' textColor='text-white'/>
+                                <Link to='/products/earphone'>
+                                    < HomeElementButton text='Browse' bgColor='bg-primary' textColor='text-white'/>
+                                </Link>
                             </div>
                         </div>
                         <img src={Img1} alt="" className='w-[320px] absolute buttom-0'/>
@@ -33,7 +36,9 @@ const Categories = () => {
                                 <p className='mb-[2px] text-white'>Enjoy</p>
                                 <p className='text-2xl font-semibold mb-[2px]'>With</p>
                                 <p className='text-4xl xl:text-5xl front-blod opacity-20 mb-2'>Gadget</p>
-                                < HomeElementButton text='Browse' bgColor='bg-white' textColor='text-brandYellow'/>
+                                <Link to='/products/gadget'>
+                                    < HomeElementButton text='Browse' bgColor='bg-white' textColor='text-brandYellow'/>
+                                </Link>
                             </div>
                         </div>
                         <img src={Img2} alt="" className='w-[320px] absolute -right-12 lg:top-[40px]'/>
@@ -45,7 +50,9 @@ const Categories = () => {
                                 <p className='mb-[2px] text-white'>Enjoy</p>
                                 <p className='text-2xl font-semibold mb-[2px]'>With</p>
                                 <p className='text-4xl xl:text-5xl front-blod opacity-20 mb-2'>Laptop</p>
-                                < HomeElementButton text='Browse' bgColor='bg-white' textColor='text-primary'/>
+                                <Link to='/products/laptop'>
+                                    < HomeElementButton text='Browse' bgColor='bg-white' textColor='text-primary'/>
+                                </Link>
                             </div>
                         </div>
                         <img src={Img3} alt="" className='w-[320px] absolute top-1/2 -translate-y-1/2 -right-0'/>
@@ -64,7 +71,9 @@ const Categories = () => {
                                 <p className='mb-[2px] text-white'>Enjoy</p>
                                 <p className='text-2xl text-white font-semibold mb-[2px]'>With</p>
                                 <p className='text-4xl xl:text-5xl text-white front-blod opacity-20 mb-2'>Gaming</p>
-                                < HomeElementButton text='Browse' bgColor='bg-primary' textColor='text-white'/>
+                                <Link to='/products/gaming'>
+                                    < HomeElementButton text='Browse' bgColor='bg-primary' textColor='text-white'/>
+                                </Link>
                             </div>
                         </div>
                         <img src={Img4} alt="" className='w-[320px] absolute top-1/2 -translate-y-1/2 -right-0'/>
@@ -76,7 +85,9 @@ const Categories = () => {
                                 <p className='mb-[2px] text-white'>Enjoy</p>
                                 <p className='text-2xl font-semibold mb-[2px]'>With</p>
                                 <p className='text-4xl xl:text-5xl front-blod opacity-20 mb-2'>Virtual</p>
-                                < HomeElementButton text='Browse' bgColor='bg-white' textColor='text-brandGreen'/>
+                                <Link to='/products/virtual'>
+                                    < HomeElementButton text='Browse' bgColor='bg-white' textColor='text-brandGreen'/>
+                                </Link>
                             </div>
                         </div>
                         <img src={Img5} alt="" className='w-[280px] absolute -right-7 lg:top-[70px]'/>
@@ -88,7 +99,9 @@ const Categories = () => {
                                 <p className='mb-[2px] text-gray-400'>Enjoy</p>
                                 <p className='text-2xl font-semibold mb-[2px]'>With</p>
                                 <p className='text-4xl xl:text-5xl front-blod opacity-20 mb-2'>Speaker</p>
-                                < HomeElementButton text='Browse' bgColor='bg-white' textColor='text-brandBlue'/>
+                                <Link to='/products/speaker'>
+                                    < HomeElementButton text='Browse' bgColor='bg-white' textColor='text-brandBlue'/>
+                                </Link>
                             </div>
                         </div>
                         <img src={Img6} alt="" className='w-[320px] absolute -right-7 lg:top-[40px]'/>

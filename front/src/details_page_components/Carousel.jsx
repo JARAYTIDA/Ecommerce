@@ -5,10 +5,10 @@ import Img3 from './images/image-product-3-thumbnail.jpg'
 import Img4 from './images/image-product-4-thumbnail.jpg'
 
 const thumbnails = [
-    Img1,Img2, Img3, Img4
+    'https://rukminim2.flixcart.com/image/128/128/xif0q/headphone/x/i/e/-original-imagt5cwjjdytpfv.jpeg?q=70&crop=false','https://rukminim2.flixcart.com/image/128/128/xif0q/headphone/x/i/e/-original-imagt5cwjjdytpfv.jpeg?q=70&crop=false', 'https://rukminim2.flixcart.com/image/128/128/xif0q/headphone/x/i/e/-original-imagt5cwjjdytpfv.jpeg?q=70&crop=false', 'https://rukminim2.flixcart.com/image/128/128/xif0q/headphone/x/i/e/-original-imagt5cwjjdytpfv.jpeg?q=70&crop=false'
 ]
 
-const Carousel = ({ children: slides, autoSlide = false, autoSlideInterval = 3000,}) => {
+const Carousel = ({ children: slides, autoSlide = false, autoSlideInterval = 3000,data, id}) => {
   const [curr, setCurr] = useState(0)
 
   const prev = () =>
@@ -59,7 +59,7 @@ const Carousel = ({ children: slides, autoSlide = false, autoSlideInterval = 300
       </div>
       <div className="hidden md:flex w-full gap-8 mt-8 h-20">
         {
-          thumbnails.map( (t, i) => (
+          data[id-1].thumb_imgs.map( (t, i) => (
             <div 
               key={i}
               onClick={ () => setCurr(i) }

@@ -9,7 +9,8 @@ const HOST_NAME = process.env.HOST_NAME;
 const ADMIN_EMAIL = process.env.ADMIN_EMAIL;
 const EMAIL_PASS = process.env.EMAIL_PASS;
 const ADMIN_NAME = process.env.ADMIN_NAME;
-const SECRET_ENCRYPTION = process.env.SECRET_ENCRYPTION;
+const SECRET_ENCRYPTION_TICKET = process.env.SECRET_ENCRYPTION_TICKET;
+const SECRET_ENCRYPTION_FORGOT_PASSWORD = process.env.SECRET_ENCRYPTION_FORGOT_PASSWORD;
 
 const transporter = nodemailer.createTransport({
     host: HOST_NAME,
@@ -24,16 +25,21 @@ const transporter = nodemailer.createTransport({
 export const signup = async (req, res) => {
     const hash1 = crypto.createHash(ENCRYPTION_METHOD);
     const hash2 = crypto.createHash(ENCRYPTION_METHOD);
+    const hash3 = crypto.createHash(ENCRYPTION_METHOD);
     const  user = req.body;
     const data = hash1.update(user.password, 'utf-8');
     //Creating the hash in the required format
     const gen_hash= data.digest('hex');
     user.password = gen_hash;
-    const ticket = hash2.update(`${user.email_id}+${user.user_id}_${SECRET_ENCRYPTION}`, "utf-8");
+    const ticket = hash2.update(`${user.email_id}+${user.user_id}_${SECRET_ENCRYPTION_TICKET}`, "utf-8");
     const ticket_gen_hash = ticket.digest('hex');
+    const forgotPass = hash3.update(`${user.email_id}+${user.user_id}_${SECRET_ENCRYPTION_FORGOT_PASSWORD}`, "utf-8");
+    const forgotPass_gen_hash = forgotPass.digest('hex');
     user.ticket = ticket_gen_hash;
+    user.forgotPass = forgotPass_gen_hash;
     user.verified = false;
     user.cart = [];
+    user.resetPassReq = false;
     const newUser = new userDetails(user);
 
     console.log(newUser);
@@ -41,29 +47,29 @@ export const signup = async (req, res) => {
 
     try {
         await newUser.save();
-        //verification email 
+        // verification email 
 
-    //     console.log("sending email ......")
-    //     const mailOptions = {
-    //         from: `"${ADMIN_NAME}" <${ADMIN_EMAIL}>`,
-    //         to: `${user.email_id}`,
-    //         subject: 'Please Verify you account',
-    //         text: `please click on this link in order to verify you account  http://localhost:3000/verification?ticket=${ticket_gen_hash}  `,
-    //     };
+        console.log("sending email ......")
+        const mailOptions = {
+            from: `"${ADMIN_NAME}" <${ADMIN_EMAIL}>`,
+            to: `${user.email_id}`,
+            subject: 'Please Verify you account',
+            text: `please click on this link in order to verify you account  http://localhost:3000/verification?ticket=${ticket_gen_hash}  `,
+        };
         
-    //       // Send mail
-    //     transporter.sendMail(mailOptions, (error, info) => {
-    //         if (error) {
-    //             console.log('Error occurred:', error.message);
-    //             res.status(500).send('Error sending email');
-    //             return;
-    //         }
-    //         console.log('Email sent successfully!');
-    //         console.log('Message ID:', info.messageId);
-    //         res.send('Email sent successfully!');
-    //     });
+          // Send mail
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.log('Error occurred:', error.message);
+                res.status(500).send('Error sending email');
+                return;
+            }
+            console.log('Email sent successfully!');
+            console.log('Message ID:', info.messageId);
+            res.send('Email sent successfully!');
+        });
         
-        res.status(201).json(newUser);
+        res.status(200).json(newUser);
     } catch (error) {
         res.status(409).json({message : error.message});
     }
@@ -99,7 +105,7 @@ export const signin = async (req, res) => {
             res.status(300).json({message: msg});
         }
     }catch(err){
-        console.log(user)
+        res.status(400).json({message:err});
         // console.log(err);
     }
 }
@@ -116,78 +122,12 @@ export const getUsers = async (req, res) => {
 
 export const sendEmail = async (req, res) => {
     console.log("sending email ......")
+    const data = req.body;
     const mailOptions = {
         from: `"${ADMIN_NAME}" <${ADMIN_EMAIL}>`,
-        to: 'rudrakshnamdeo@gmail.com',
+        to: 'thissugarbaby@gmail.com',
         subject: 'Test Email 2',
-        text: 'Please reviw you order details',
-        text:'This is a test mail form server of mohhammad',
-        html: `
-        <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Email Table</title>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th, td {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-        img {
-            width: 300px;
-            height: 200px;
-        }
-    </style>
-</head>
-<body>
-
-<h2>Sample HTML Table for Email</h2>
-
-<table>
-    <tr>
-        <th>Product</th>
-        <th>Price</th>
-        <th>Quantity</th>
-        <th>Total</th>
-    </tr>
-    <tr>
-        <td><img src="https://i.postimg.cc/tghbJjN7/pexels-web-donut-19090.jpg"/></td>
-        <td>$10</td>
-        <td>2</td>
-        <td>$20</td>
-    </tr>
-    <tr>
-        <td><img src="https://i.postimg.cc/RZ4Qy1p8/pexels-nathan-j-hilton-4277508.jpg"/></td>
-        <td>$15</td>
-        <td>1</td>
-        <td>$15</td>
-    </tr>
-    <tr>
-        <td colspan="3">Subtotal</td>
-        <td>$35</td>
-    </tr>
-    <tr>
-        <td colspan="3">Tax</td>
-        <td>$5</td>
-    </tr>
-    <tr>
-        <td colspan="3">Total</td>
-        <td>$40</td>
-    </tr>
-</table>
-
-</body>
-</html>`,
-
+        html: data.html,
     };
       // Send mail
     transporter.sendMail(mailOptions, (error, info) => {
@@ -198,6 +138,89 @@ export const sendEmail = async (req, res) => {
         }
         console.log('Email sent successfully!');
         console.log('Message ID:', info.messageId);
-        res.send('Email sent successfully!');
+        res.status(200).json({message:'Email sent successfully!'});
     });
 }
+
+export const addToCart = async (req, res) => {
+    const data = req.query;
+    const product = data.product;
+    const id = data.id;
+    console.log(data);
+    const find_user = await userDetails.find({email_id:data.email});
+    console.log(find_user)
+    try{
+        await userDetails.updateOne(
+            { email_id:data.email },
+            { $push: { cart: {
+                product : `${product}`,
+                id : `${id}`,
+            } } }
+        )
+        res.status(200).json({message : "cart updated successfully"})
+    }catch(e){
+        console.log(e);
+        res.status(300).json({message : e})
+    }
+}
+
+export const getCart = async (req, res) => {
+    const data = req.query;
+    console.log(data);
+    try{
+        const find_user = await userDetails.find({email_id:data.email});
+        console.log(find_user)
+        res.status(200).json({cart : find_user[0].cart})
+    }catch(e){
+        console.log(e);
+        res.status(300).json({message : e})
+    }
+}
+
+// export const addToCart = async (req, res) => {
+//     const data = req.query;
+//     const email = data.email_id;
+//     const product = data.product;
+//     const id = data.id;
+//     const find_user = await userDetails.find({email_id : email});
+//     const arr = find_user.cart;
+//     const obj = arr.find(o => o.product === `${product}`);
+
+//     if(obj === undefined){
+//         try{
+//             await userDetails.updateOne(
+//                 { email_id : email },
+//                 { $push: { cart: {
+//                     product : `${product}`,
+//                     cart_value : [
+//                         {
+//                             id : id,
+//                             count : 1,
+//                         },
+//                     ]
+//                 } } }
+//             )
+//         }
+//         catch(e){
+//             console.log(e);
+//         }
+//     }
+//     else{
+//         const cart_arr = obj.cart_value;
+//         const obj2 = cart_arr.find(o => o.id === `${id}`);
+//         if(obj2 === undefined){
+
+//         }
+//         else{
+//             try{
+//                 await userDetails.updateOne(
+//                     { email_id : email, cart : obj2,},
+//                     { $set: { cart: } }
+//                 )
+//             }
+//             catch(e){
+//                 console.log(e);
+//             }
+//         }
+//     }
+// }

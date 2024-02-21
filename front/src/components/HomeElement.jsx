@@ -1,5 +1,6 @@
 import React from 'react'
 import Slider from 'react-slick'
+import { Link } from 'react-router-dom'
 
 import Img1 from '../assets/hero/headphone.png'
 import Img2 from '../assets/category/vr.png'
@@ -10,7 +11,8 @@ const Data = [
     {
         id: 1,
         img: Img1,
-        subtitle: 'Beats Solo',
+        product: 'headphone',
+        subtitle: 'Buy new',
         title: "Wireless",
         title2: "Headphones",
         description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis optio assumenda doloribus quisquam recusandae quidem, maxime alias voluptate, debitis fugiat cumque unde vitae reprehenderit sed officiis fugit ex architecto eveniet.",
@@ -18,7 +20,8 @@ const Data = [
     {
         id: 2,
         img: Img2,
-        subtitle: 'Beats Solo',
+        product: 'virtual',
+        subtitle: 'Buy new',
         title: "Wireless",
         title2: "Virtual",
         description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis optio assumenda doloribus quisquam recusandae quidem, maxime alias voluptate, debitis fugiat cumque unde vitae reprehenderit sed officiis fugit ex architecto eveniet.",
@@ -26,7 +29,8 @@ const Data = [
     {
         id: 3,
         img: Img3,
-        subtitle: 'Beats Solo',
+        product: 'laptop',
+        subtitle: 'Buy new',
         title: "Branded",
         title2: "Laptops",
         description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis optio assumenda doloribus quisquam recusandae quidem, maxime alias voluptate, debitis fugiat cumque unde vitae reprehenderit sed officiis fugit ex architecto eveniet.",
@@ -61,7 +65,9 @@ const HomeElement = () => {
                                                 <h1 className='text-5xl sm:text-6xl lg:text-7xl font-bold'>{data.title}</h1>
                                                 <h1 className='text-5xl uppercase text-white dark:text-white/5 sm:text-[80px] md:text-[100px] xl:text-[150px] font-bold'>{data.title2}</h1>
                                                 <div>
-                                                    < HomeElementButton text='Shop Now' bgColor='bg-primary' textColor='text-white' />
+                                                    <Link to={`/products/${data.product}`}>
+                                                        < HomeElementButton text='Shop Now' bgColor='bg-primary' textColor='text-white' />
+                                                    </Link>
                                                 </div>
                                             </div>
                                             {/* Image Section */}

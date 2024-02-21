@@ -1,9 +1,26 @@
 import React, { useState } from 'react'
 
 
-const CTASection = ({props}) => {
+const CTASection = ({cartCounter, setCartCounter, id, product}) => {
 
-  const {cartCounter, setCartCounter} = props;
+  // const {cartCounter, setCartCounter} = props;
+  const email = window.localStorage.getItem('email_id');
+  const handlClick = async (event) => {
+    event.preventDefault();
+    try {
+        const response = await fetch(`http://localhost:5000/auth/add-to-cart?email=${email}&id=${id}&product=${product}`);
+
+        if (response.ok) {
+            const data = await response.json();
+            console.log(data); // Response from the server
+            window.localStorage.setItem('email_id', data[0].email_id)
+        } else {
+            console.error('Failed to submit form');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
   const [productCounter, setProductCounter] = useState(0);
   
   const addProduct    = () => productCounter + 1;
@@ -52,12 +69,13 @@ const CTASection = ({props}) => {
 
         {/* Add to cart Button */}
         <button 
-          onClick={ addToCard }
+          onClick={ handlClick }
           className='w-full bg-orange text-white   bg-primary py-4 rounded-xl font-bold md:w-2/3'
         >
           <div className='flex gap-4 justify-center'>
           <svg className='text-white ' width="22" height="20" xmlns="http://www.w3.org/2000/svg"><path d="M20.925 3.641H3.863L3.61.816A.896.896 0 0 0 2.717 0H.897a.896.896 0 1 0 0 1.792h1l1.031 11.483c.073.828.52 1.726 1.291 2.336C2.83 17.385 4.099 20 6.359 20c1.875 0 3.197-1.87 2.554-3.642h4.905c-.642 1.77.677 3.642 2.555 3.642a2.72 2.72 0 0 0 2.717-2.717 2.72 2.72 0 0 0-2.717-2.717H6.365c-.681 0-1.274-.41-1.53-1.009l14.321-.842a.896.896 0 0 0 .817-.677l1.821-7.283a.897.897 0 0 0-.87-1.114ZM6.358 18.208a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm10.015 0a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm2.021-7.243-13.8.81-.57-6.341h15.753l-1.383 5.53Z" fill="currentColor" fillRule="nonzero"/></svg>
             Add to cart
+           
           </div>
         </button>
     </div>
