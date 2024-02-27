@@ -13,6 +13,7 @@ const bannerData = {
   title3 : 'Winter Sale',
   title4 : 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam rem obcaecati',
   bgColor : '#f42c37',
+  link : '/details2?product=headphone&id=1'
 }
 
 const bannerData2 = {
@@ -24,6 +25,7 @@ const bannerData2 = {
   title3 : 'Winter Sale',
   title4 : 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam rem obcaecati',
   bgColor : '#2dcc6f',
+  link : '/details2?product=gadget&id=1'
 }
 
 const Home = () => {

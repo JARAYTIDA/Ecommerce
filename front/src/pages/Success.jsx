@@ -5,8 +5,8 @@ const Success = () => {
     const email = params.get('email');
     const sendOrderDetails = async () => {
         try {
-            const response = await fetch(`https://ecommerce-lcv2.onrender.com/reset/order?email=${email}`);
-            const response2 = await fetch(`https://ecommerce-lcv2.onrender.com/auth/empty?email=${email}`);
+            const response = await fetch(`https://ecommerce-1-7a3c.onrender.com/reset/order?email=${email}`);
+            const response2 = await fetch(`https://ecommerce-1-7a3c.onrender.com/auth/empty?email=${email}`);
             console.log(response);
             console.log(response2);
         } catch (error) {

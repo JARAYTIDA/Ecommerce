@@ -11,7 +11,7 @@ const ProductCard = ({data}) => {
                     <div className='relative'>
                         <img src={data.img} alt="" className='h-[180px] w-[260px] object-cover rounded-md'/>
                         <div className='hidden group-hover:flex absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 h-full w-full text-center group-hover:backdrop-blur-sm justify-center items-center duration-200'>
-                            <Link to='/details2'>
+                            <Link to={`${data.link}`}>
                                 <HomeElementButton text={"Shop now"} bgColor={'bg-primary'} textColor={'text-white'}/>
                             </Link>
                         </div>

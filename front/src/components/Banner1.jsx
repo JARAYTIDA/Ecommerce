@@ -26,7 +26,7 @@ const Banner1 = ({data}) => {
                         <p className='text-3xl sm:text-5xl font-bold'>{data.title3}</p>
                         <p className='text-sm tracking-wide landing-5'>{data.title4}</p>
                         <div>
-                            <Link to='/details2'>
+                            <Link to={`${data.link}`}>
                                 <button style={{color:data.bgColor}} className='bg-white py-2 px-4 rounded-full' >Shop Now</button>
                             </Link>
                         </div>

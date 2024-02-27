@@ -18,6 +18,7 @@ const productData = [
         title : 'Boat Headphone',
         price: '320',
         aosDelay: '0',
+        link : '/details2?product=headphone&id=1'
     },
     {
         id: 2,
@@ -25,6 +26,7 @@ const productData = [
         title : 'Rocky Mountain',
         price: '320',
         aosDelay: '200',
+        link : '/details2?product=gadget&id=1'
     },
     {
         id: 3,
@@ -32,6 +34,7 @@ const productData = [
         title : 'Goggles',
         price: '320',
         aosDelay: '400',
+        link : '/details2?product=headphone&id=1'
     },
     {
         id: 4,
@@ -39,6 +42,7 @@ const productData = [
         title : 'Printed',
         price: '320',
         aosDelay: '600',
+        link : '/details2?product=headphone&id=1'
     },
 ]
 

@@ -11,7 +11,7 @@ const VerifyEmail = () => {
     const handlClick = async (event) => {
         event.preventDefault();
         try {
-            const response = await fetch(`https://ecommerce-lcv2.onrender.com/verify?ticket=${ticket}`);
+            const response = await fetch(`https://ecommerce-1-7a3c.onrender.com/verify?ticket=${ticket}`);
 
             if (response.ok) {
                 const data = await response.json();

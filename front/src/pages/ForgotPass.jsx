@@ -7,7 +7,7 @@ const ForgotPass = () => {
     const handlSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await fetch('https://ecommerce-lcv2.onrender.com/reset/reset-mail', {
+            const response = await fetch('https://ecommerce-1-7a3c.onrender.com/reset/reset-mail', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

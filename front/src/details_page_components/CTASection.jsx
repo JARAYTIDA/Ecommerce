@@ -15,7 +15,7 @@ const CTASection = ({cartCounter, setCartCounter, id, product}) => {
     else{
       try {
         // console.log(productCounter);
-          const response = await fetch(`https://ecommerce-lcv2.onrender.com/auth/add-to-cart?email=${email}&id=${id}&product=${product}&count=${productCounter}&price=${products_data[product][id-1].price1}&img=${products_data[product][id-1].img}&name=${products_data[product][id-1].name}`);
+          const response = await fetch(`https://ecommerce-1-7a3c.onrender.com/auth/add-to-cart?email=${email}&id=${id}&product=${product}&count=${productCounter}&price=${products_data[product][id-1].price1}&img=${products_data[product][id-1].img}&name=${products_data[product][id-1].name}`);
           if (response.ok) {
               const data = await response.json();
               console.log(data); // Response from the server

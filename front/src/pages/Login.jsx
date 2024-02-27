@@ -12,7 +12,7 @@ const Login = () => {
     const handlSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await fetch('https://ecommerce-lcv2.onrender.com/auth/signin', {
+            const response = await fetch('https://ecommerce-1-7a3c.onrender.com/auth/signin', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
