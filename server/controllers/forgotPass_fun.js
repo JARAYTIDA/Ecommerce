@@ -41,7 +41,7 @@ export const forgotPass = async (req, res) => {
 
     } catch(e) {
         console.log(e);
-        res.status(300).json({message:e});
+        res.status(401).json({message:e});
     }
 }
 
@@ -87,15 +87,20 @@ export const send_forgotPass_mail = async (req, res) => {
     };
 
       // Send mail
-    transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-            console.log('Error occurred:', error.message);
-            res.status(500).send('Error sending email');
-            return;
-        }
-        console.log('Email sent successfully!');
-        console.log('Message ID:', info.messageId);
-        res.status(200).json({message:'Email sent successfully!'});
-    });
+    try{
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.log('Error occurred:', error.message);
+                res.status(500).send('Error sending email');
+                return;
+            }
+            console.log('Email sent successfully!');
+            console.log('Message ID:', info.messageId);
+            res.status(200).json({message:'Email sent successfully!'});
+        });
+    } catch(err){
+        console.log(err);
+        res.status(401).json({message : e.message});
+    }
 }
 

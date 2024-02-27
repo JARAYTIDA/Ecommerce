@@ -91,8 +91,95 @@ export const products_data = {
             description : "Boult Loop2 with 10mm Drivers, BoomX Rich Bass, In-line Controls, Soft Silicon Snugfit Wired Headset  (Teal Blue, In the Ear)",
             },
     ],
-    gadgets : [
-        
+    gadget : [
+        {
+            id : 1,
+            img : 'https://rukminim2.flixcart.com/image/832/832/xif0q/watch/m/l/p/-original-imagunxzbuztctmv.jpeg?q=70&crop=false',
+            imgs : [
+                'https://rukminim2.flixcart.com/image/832/832/xif0q/watch/m/l/p/-original-imagunxzbuztctmv.jpeg?q=70&crop=false',
+                'https://rukminim2.flixcart.com/image/832/832/xif0q/watch/o/p/6/1-power-led-green-piraso-men-women-original-imagzkcpbd4hyceq.jpeg?q=70&crop=false',
+                'https://rukminim2.flixcart.com/image/832/832/xif0q/watch/b/z/0/1-power-led-green-piraso-men-women-original-imagzkcpjzxxjzwh.jpeg?q=70&crop=false',
+                'https://rukminim2.flixcart.com/image/832/832/xif0q/watch/w/0/j/1-power-led-green-piraso-men-women-original-imagzkcpwwwejyxu.jpeg?q=70&crop=false'
+            ],
+            thumb_imgs : [
+                'https://rukminim2.flixcart.com/image/128/128/xif0q/watch/m/l/p/-original-imagunxzbuztctmv.jpeg?q=70&crop=false',
+                'https://rukminim2.flixcart.com/image/128/128/xif0q/watch/o/p/6/1-power-led-green-piraso-men-women-original-imagzkcpbd4hyceq.jpeg?q=70&crop=false',
+                'https://rukminim2.flixcart.com/image/128/128/xif0q/watch/b/z/0/1-power-led-green-piraso-men-women-original-imagzkcpjzxxjzwh.jpeg?q=70&crop=false',
+                'https://rukminim2.flixcart.com/image/128/128/xif0q/watch/w/0/j/1-power-led-green-piraso-men-women-original-imagzkcpwwwejyxu.jpeg?q=70&crop=false'
+            ],
+            name : 'Lifestyle Dial Color Green',
+            price1 : '$10',
+            price2 : '$20',
+            compnay : 'PIRASO',
+            discount : '50%',
+            description : "Lifestyle Dial Color Black & Green Strap Digital Watch For Boys And Girls Digital Watch - For Men & Women POWER LED GREEN",
+        },
+        {
+            id : 2,
+            img : 'https://rukminim2.flixcart.com/image/832/832/xif0q/watch/g/9/8/-original-imagrk9surespy2h.jpeg?q=70&crop=false',
+            imgs : [
+                'https://rukminim2.flixcart.com/image/832/832/xif0q/watch/g/9/8/-original-imagrk9surespy2h.jpeg?q=70&crop=false',
+                'https://rukminim2.flixcart.com/image/832/832/xif0q/watch/1/i/k/-original-imagnu3ndz5mjx6a.jpeg?q=70&crop=false',
+                'https://rukminim2.flixcart.com/image/832/832/xif0q/watch/n/g/w/1-white-dial-men-s-analog-watch-ss-gr089-wht-blk-swisstyle-men-original-imaggsjkrfxvsjr4.jpeg?q=70&crop=false',
+                'https://rukminim2.flixcart.com/image/832/832/xif0q/watch/u/f/r/1-white-dial-men-s-analog-watch-ss-gr089-wht-blk-swisstyle-men-original-imaggsjkmj5txnhz.jpeg?q=70&crop=false'
+            ],
+            thumb_imgs : [
+                'https://rukminim2.flixcart.com/image/128/128/xif0q/watch/g/9/8/-original-imagrk9surespy2h.jpeg?q=70&crop=false',
+                'https://rukminim2.flixcart.com/image/128/128/xif0q/watch/1/i/k/-original-imagnu3ndz5mjx6a.jpeg?q=70&crop=false',
+                'https://rukminim2.flixcart.com/image/128/128/xif0q/watch/n/g/w/1-white-dial-men-s-analog-watch-ss-gr089-wht-blk-swisstyle-men-original-imaggsjkrfxvsjr4.jpeg?q=70&crop=false',
+                'https://rukminim2.flixcart.com/image/128/128/xif0q/watch/u/f/r/1-white-dial-men-s-analog-watch-ss-gr089-wht-blk-swisstyle-men-original-imaggsjkmj5txnhz.jpeg?q=70&crop=false'
+            ],
+            name : 'Analog Watch',
+            price1 : '$10',
+            price2 : '$20',
+            compnay : 'Swisstyle',
+            discount : '50%',
+            description : "Analog Watch - For Men White Dial Men's Analog Watch-SS-GR089-WHT-BLK",
+        },
+        {
+            id : 3,
+            img : 'https://rukminim2.flixcart.com/image/832/832/xif0q/watch/y/s/1/-original-imagrgwxcugwzpsy.jpeg?q=70&crop=true',
+            imgs : [
+                'https://rukminim2.flixcart.com/image/832/832/xif0q/watch/y/s/1/-original-imagrgwxcugwzpsy.jpeg?q=70&crop=true',
+                'https://rukminim2.flixcart.com/image/832/832/xif0q/watch/h/t/j/1-305wdtg-timewear-men-original-imagj8d5frzgfzfm.jpeg?q=70&crop=true',
+                'https://rukminim2.flixcart.com/image/832/832/xif0q/watch/8/c/0/1-305wdtg-timewear-men-original-imagj8d5x4mnmyrc.jpeg?q=70&crop=true',
+                'https://rukminim2.flixcart.com/image/832/832/xif0q/watch/t/p/r/1-305wdtg-timewear-men-original-imagj8d5yuzagzdc.jpeg?q=70&crop=true'
+            ],
+            thumb_imgs : [
+                'https://rukminim2.flixcart.com/image/128/128/xif0q/watch/y/s/1/-original-imagrgwxcugwzpsy.jpeg?q=70&crop=true',
+                'https://rukminim2.flixcart.com/image/128/128/xif0q/watch/h/t/j/1-305wdtg-timewear-men-original-imagj8d5frzgfzfm.jpeg?q=70&crop=true',
+                'https://rukminim2.flixcart.com/image/128/128/xif0q/watch/8/c/0/1-305wdtg-timewear-men-original-imagj8d5x4mnmyrc.jpeg?q=70&crop=true',
+                'https://rukminim2.flixcart.com/image/128/128/xif0q/watch/t/p/r/1-305wdtg-timewear-men-original-imagj8d5yuzagzdc.jpeg?q=70&crop=true'
+            ],
+            name : 'TIMEWEAR New Track',
+            price1 : '$10',
+            price2 : '$20',
+            compnay : 'TIMEWEAR',
+            discount : '50%',
+            description : "TIMEWEAR New Track Number Dial, Day & Date, Brown Leather Strap Analog Watch - For Men 305WDTG",
+        },
+        {
+            id : 4,
+            img : 'https://rukminim2.flixcart.com/image/832/832/xif0q/watch/a/k/e/-original-imagnydrewxe5qeg.jpeg?q=70&crop=false',
+            imgs : [
+                'https://rukminim2.flixcart.com/image/832/832/xif0q/watch/a/k/e/-original-imagnydrewxe5qeg.jpeg?q=70&crop=false',
+                'https://rukminim2.flixcart.com/image/832/832/k8ro3gw0/watch/n/h/w/68011pp08-fastrack-original-imafqpgyxj24wf6b.jpeg?q=70&crop=false',
+                'https://rukminim2.flixcart.com/image/832/832/k8ro3gw0/watch/n/h/w/68011pp08-fastrack-original-imafqpgydmyr4mff.jpeg?q=70&crop=false',
+                'https://rukminim2.flixcart.com/image/832/832/k8ro3gw0/watch/n/h/w/68011pp08-fastrack-original-imafqpgywydwxhzg.jpeg?q=70&crop=false'
+            ],
+            thumb_imgs : [
+                'https://rukminim2.flixcart.com/image/128/128/xif0q/watch/a/k/e/-original-imagnydrewxe5qeg.jpeg?q=70&crop=false',
+                'https://rukminim2.flixcart.com/image/128/128/k8ro3gw0/watch/n/h/w/68011pp08-fastrack-original-imafqpgyxj24wf6b.jpeg?q=70&crop=false',
+                'https://rukminim2.flixcart.com/image/128/128/k8ro3gw0/watch/n/h/w/68011pp08-fastrack-original-imafqpgydmyr4mff.jpeg?q=70&crop=false',
+                'https://rukminim2.flixcart.com/image/128/128/k8ro3gw0/watch/n/h/w/68011pp08-fastrack-original-imafqpgywydwxhzg.jpeg?q=70&crop=false'
+            ],
+            name : 'Tees Analog Watch',
+            price1 : '$10',
+            price2 : '$20',
+            compnay : 'Fastrack',
+            discount : '50%',
+            description : "Tees Analog Watch - For Men 68011PP08",
+        },
     ],
     laptop : [
         {
@@ -184,13 +271,16 @@ export const products_data = {
                         description : "Exell at work and tickle your entertainment rib with the ASUS VivoBook 15, designed meticulously to provide incredible performance and enhance your productivity. Driven by the 11th Gen Intel Core i3-1115G4 processor, this laptop enables you to multitask with utmost ease and get things done quickly. ",
                         },
     ],
-    Gaming : [
+    gaming : [
 
     ],
-    Virtual : [
+    virtual : [
 
     ],
-    Speaker : [
+    speaker : [
         
     ],
+    headphone : [
+
+    ]
 }

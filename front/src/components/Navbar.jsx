@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import {IoMdSearch} from 'react-icons/io'
 import {FaShoppingCart, FaCaretDown, FaRegUser} from 'react-icons/fa'
@@ -47,6 +47,42 @@ const DropDownLinks = [
 ]
 
 const Navbar = () => {
+    const email = window.localStorage.getItem('email_id');
+    const [showCount, setshowCount] = useState(false);
+    const [count, setcount] = useState(0)
+    useEffect(() => {
+        if(email === null || email === undefined){
+            setshowCount(false);
+        }
+        else{
+            getCartData();
+        }
+    }, [])
+
+    
+    
+    const getCartData = async () => {
+            try {
+                const response = await fetch(`http://localhost:5000/auth/cart-size?email=${email}`);
+                if (response.ok) {
+                    const data = await response.json();
+                    console.log(data); // Response from the server
+                    setcount(data.count);
+                    setshowCount(true);
+                } else {
+                    console.error('Failed to submit form');
+                    setshowCount(false);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                setshowCount(false);
+            }
+    }
+    // getCartData();
+    // useEffect(async (event) => {
+    //     event.preventDefault();
+    // }, [cnt])
+    
     const [search, setsearch] = useState('')
     return (
         <div className='bg-white dark:bg-gray-900 dark:text-white duration-200 relative z-40 '>
@@ -98,9 +134,9 @@ const Navbar = () => {
                             <Link to='/cart'>
                                 <FaShoppingCart className='text-xl text-gray-600 dark:text-gray-400'/>
                             </Link>
-                            <div className='w-4 h-4 bg-red-500 text-white rounded-full absolute top-0 right-0 flex items-center justify-center text-xs'>
-                                4
-                            </div>
+                            {showCount && <div className='w-4 h-4 bg-red-500 text-white rounded-full absolute top-0 right-0 flex items-center justify-center text-xs'>
+                                {count}
+                            </div>}
                         </button>
                         {/* Dark mode section */}
                         <div className='text-xl p-3'>

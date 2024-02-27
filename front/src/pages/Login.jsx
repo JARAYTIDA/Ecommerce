@@ -1,11 +1,13 @@
 import React, {useState} from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Login = () => {
     const [signindata, setSignindata] = useState({
         password : '',
         email_id : ''
     })
+    const navigate = useNavigate();
+    const email = window.localStorage.getItem("email_id");
     const handlSubmit = async (event) => {
         event.preventDefault();
         try {
@@ -21,11 +23,15 @@ const Login = () => {
                 const data = await response.json();
                 console.log(data); // Response from the server
                 window.localStorage.setItem('email_id', data[0].email_id)
+                navigate('/')
+                window.location.reload();
             } else {
                 console.error('Failed to submit form');
+                navigate('/login')
             }
         } catch (error) {
             console.error('Error:', error);
+            navigate('/login')
         }
     }
     return (

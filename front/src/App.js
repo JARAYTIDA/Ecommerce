@@ -2,7 +2,7 @@ import React from 'react'
 import { Routes, Route } from 'react-router-dom'
 
 import { Footer, Navbar } from './components'
-import { Cart, Details, Details2, EmailVerificationAsk, ForgotPass, Home, Login, Payment, Products_List, ResetPassConfirmation, ResetPassEmailPage, ResetPassword, SignUp, VerifyEmail } from './pages'
+import { Cart, Details, Details2, EmailVerificationAsk, ForgotPass, Home, Login, Payment, Products_List, Profile, ResetPassConfirmation, ResetPassEmailPage, ResetPassword, SignUp, VerifyEmail } from './pages'
 
 const App = () => {
   return (
@@ -23,6 +23,7 @@ const App = () => {
         <Route path='/verify-email' element={<EmailVerificationAsk/>} />
         <Route path='/verification' element={<VerifyEmail/>} />
         <Route path='/reset-password-confirmation' element={<ResetPassConfirmation/>} />
+        <Route path='/profile' element={<Profile/>} />
       </Routes>
       < Footer />
     </div>

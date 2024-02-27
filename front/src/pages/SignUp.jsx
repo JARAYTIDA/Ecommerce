@@ -22,6 +22,13 @@ const SignUp = () => {
             if (response.ok) {
                 const data = await response.json();
                 console.log(data); 
+
+                // const jwt_token = jwt_token.sign(data, "ghjkl;");
+                const expirationDate = new Date();
+                expirationDate.setTime(expirationDate.getTime() + (1 * 60 * 60 * 1000));
+                const expires = "expires=" + expirationDate.toUTCString();
+                // document.cookie = `uuid=${jwt_token};` + expires + "; path=/";
+
                 navigate('/verify-email');
                 // Response from the server
             } else {
