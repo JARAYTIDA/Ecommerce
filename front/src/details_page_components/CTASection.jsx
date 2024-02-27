@@ -26,6 +26,7 @@ const CTASection = ({cartCounter, setCartCounter, id, product}) => {
       } catch (error) {
           console.error('Error:', error);
       }
+      window.location.reload();
     }
 }
   const [productCounter, setProductCounter] = useState(0);

@@ -89,18 +89,21 @@ export const signin = async (req, res) => {
 
     try{
         if(user.email_id){
-            const find_user = await userDetails.find({email_id : user.email_id, password:gen_hash});
-            if(find_user != undefined){
-                res.status(200).json(find_user);
+            try{
+                const find_user = await userDetails.find({email_id : user.email_id, password:gen_hash});
+                if(find_user && !find_user[0].verified){
+                    res.status(403).json({message : "please verify your email to login"});
+                }
+    
+                else if(find_user !== undefined && find_user !== null){
+                    // console.log()
+                        res.status(200).json(find_user);
+                    
+                }
+                else res.status(401).json({message:"incorrect email id or password"});
+            }catch(err){
+                res.status(401).json({message:"incorrect email id or password"});
             }
-            else res.status(401).json({message:"user does not exist"});
-        }
-        else if(user.user_id){
-            const find_user = await userDetails.find({user_id : user.user_id, password:gen_hash});
-            if(find_user !== undefined){
-                res.status(200).json(find_user);
-            }
-            else res.status(401).json({message:"user does not exist"});
         }
         else{
             const msg = "email id or username needed";

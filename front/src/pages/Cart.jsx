@@ -67,6 +67,8 @@ const Cart = () => {
         // }
     }
 
+    
+
     const remove = async (product, id) => {
         console.log('dec cart')
         // const response = await fetch(`http://localhost:5000/auth/remove?product=${product}&id=${id}&email=${email}`)
@@ -83,6 +85,7 @@ const Cart = () => {
         // } catch (error) {
         //     console.log(error)
         // }
+        // window.location.reload();
     }
     
     return (
