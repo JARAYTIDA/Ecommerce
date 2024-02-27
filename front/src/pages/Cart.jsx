@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { products_data } from '../assets/data/all_data';
 import { useNavigate } from 'react-router-dom';
+import {loadStripe} from '@stripe/stripe-js';
 
 const Cart = () => {
     const email = window.localStorage.getItem('email_id');
@@ -45,6 +46,32 @@ const Cart = () => {
             getData(email);
         }
     }, [])
+    
+	const makePayment = async()=>{
+        const stripe = await loadStripe("");
+
+        const body = {
+            products:cartData
+        }
+        const headers = {
+            "Content-Type":"application/json"
+        }
+        const response = await fetch("http://localhost:5000/auth/pay",{
+            method:"POST",
+            headers:headers,
+            body:JSON.stringify(body)
+        });
+
+        const session = await response.json();
+
+        const result = stripe.redirectToCheckout({
+            sessionId:session.id
+        });
+
+        if(result.error){
+            console.log(result.error);
+        }
+    }
     
     console.log(cartData);
 
@@ -168,7 +195,7 @@ const Cart = () => {
                     </div>
                     <div className="text-right">
                         <a className="inline-block w-full px-8 py-4 mb-4 mr-6 font-bold text-center uppercase transition duration-200 bg-gray-100 border rounded-md dark:hover:bg-gray-900 dark:text-gray-400 dark:border-gray-800 dark:bg-gray-800 md:mb-0 md:w-auto hover:bg-gray-200 " href="/">Continue Shopping</a>
-                        <a className="inline-block w-full px-8 py-4 font-bold text-center text-white uppercase transition duration-200 bg-primary/80 rounded-md md:w-auto hover:bg-primary/100 " href="/cart">Go to Checkout</a>
+                        <button onClick={makePayment} className="inline-block w-full px-8 py-4 font-bold text-center text-white uppercase transition duration-200 bg-primary/80 rounded-md md:w-auto hover:bg-primary/100 " href="/cart">Go to Checkout</button>
                     </div>
                 </div>}
             </section>
