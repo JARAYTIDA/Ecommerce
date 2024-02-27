@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { products_data } from '../assets/data/all_data';
 import { useNavigate } from 'react-router-dom';
 import {loadStripe} from '@stripe/stripe-js';
+import { Link } from 'react-router-dom';
 
 const Cart = () => {
     const email = window.localStorage.getItem('email_id');
@@ -9,9 +10,32 @@ const Cart = () => {
     const [show, setshow] = useState(false)
     const navigate = useNavigate()
     const [subtotal, setsubtotal] = useState(0)
-    
+    const [cnt, setcnt] = useState(0)
+
+    const getPrice = async (email_id) => {
+        try {
+            const response = await fetch(`http://localhost:5000/auth/total?email=${email_id}`);
+            // console.log(response);
+            if (response.ok) {
+                const data = await response.json();
+                // console.log(data); // Response from the server
+                setsubtotal(data.price);
+                setshow(true);
+                // setcartData(data.cart);
+                // console.log(cartData)
+                // window.localStorage.setItem('email_id', data[0].email_id)
+            } else {
+                console.error('Failed to submit form');
+                setshow(false);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            setshow(false);
+        }
+    }
 
     const getData = async (email_id) => {
+        
         try {
             const response = await fetch(`http://localhost:5000/auth/get-cart?email=${email_id}`);
             // console.log(response);
@@ -19,12 +43,7 @@ const Cart = () => {
                 const data = await response.json();
                 // console.log(data);
                 setcartData(data.cart) // Response from the server
-                console.log(cartData)
-                setsubtotal(0);
-                for(let i = 0; i<data.cart.length; i++){
-                    let amount = subtotal + parseInt(data.cart[i].count)*10
-                    setsubtotal(amount);
-                }
+                // console.log(cartData)
                 setshow(true);
                 // setcartData(data.cart);
                 // console.log(cartData)
@@ -44,19 +63,20 @@ const Cart = () => {
         }
         else{
             getData(email);
+            getPrice(email);
         }
-    }, [])
+    }, [cnt])
     
 	const makePayment = async()=>{
         const stripe = await loadStripe("");
-
+        
         const body = {
             products:cartData
         }
         const headers = {
             "Content-Type":"application/json"
         }
-        const response = await fetch("http://localhost:5000/auth/pay",{
+        const response = await fetch(`http://localhost:5000/auth/pay?email=${email}`,{
             method:"POST",
             headers:headers,
             body:JSON.stringify(body)
@@ -77,42 +97,60 @@ const Cart = () => {
 
     const incrCart = async (product, id) => {
         console.log('inc cart')
-        // const response = await fetch(`http://localhost:5000/auth/incr-cart?product=${product}&id=${id}&email=${email}`)
-        // try {
-        //     if (response.ok) {
-        //         const data = await response.json();
-        //         console.log(data); // Response from the server
-        //         setcnt(cnt+1)
+        const response = await fetch(`http://localhost:5000/auth/incr-cart?product=${product}&id=${id}&email=${email}`)
+        try {
+            if (response.ok) {
+                const data = await response.json();
+                // console.log(data); // Response from the server
+                setcnt(cnt+1)
                 
-        //     } else {
-        //         console.error('Failed to submit form');
+            } else {
+                console.error('Failed to submit form');
                 
-        //     }
+            }
         
-        // } catch (error) {
-        //     console.log(error)
-        // }
+        } catch (error) {
+            console.log(error)
+        }
     }
 
+    const decCart = async (product, id) => {
+        console.log('inc cart')
+        const response = await fetch(`http://localhost:5000/auth/dec-cart?product=${product}&id=${id}&email=${email}`)
+        try {
+            if (response.ok) {
+                const data = await response.json();
+                // console.log(data); // Response from the server
+                setcnt(cnt+1)
+                
+            } else {
+                console.error('Failed to submit form');
+                
+            }
+        
+        } catch (error) {
+            console.log(error)
+        }
+    }
     
 
     const remove = async (product, id) => {
         console.log('dec cart')
-        // const response = await fetch(`http://localhost:5000/auth/remove?product=${product}&id=${id}&email=${email}`)
-        // try {
-        //     if (response.ok) {
-        //         const data = await response.json();
-        //         console.log(data); // Response from the serve
+        const response = await fetch(`http://localhost:5000/auth/remove?product=${product}&id=${id}&email=${email}`)
+        try {
+            if (response.ok) {
+                const data = await response.json();
+                // console.log(data); // Response from the serve
                 
-        //     } else {
-        //         console.error('Failed to submit form');
+            } else {
+                console.error('Failed to submit form');
                 
-        //     }
+            }
         
-        // } catch (error) {
-        //     console.log(error)
-        // }
-        // window.location.reload();
+        } catch (error) {
+            console.log(error)
+        }
+        window.location.reload();
     }
     
     return (
@@ -125,10 +163,12 @@ const Cart = () => {
                     <h2 className="mb-10 text-4xl font-bold text-center dark:text-gray-400">Your Cart</h2>
                     <div className="mb-10">
                         {
-                            cartData?.map((data)=>(
-                                <div className="relative flex flex-wrap items-center pb-8 mb-8 -mx-4 border-b border-gray-200 dark:border-gray-500 xl:justify-between border-opacity-40">
+                            cartData?.map((data, index)=>(
+                                <div key={index} className="relative flex flex-wrap items-center pb-8 mb-8 -mx-4 border-b border-gray-200 dark:border-gray-500 xl:justify-between border-opacity-40">
                                     <div className="w-full mb-4 md:mb-0 h-96 md:h-44 md:w-56">
-                                        <img src={products_data[data.product][data.id - 1].img} alt="" className="object-cover w-full h-full"/>
+                                        <Link to = {`/details2?product=${data.product}&id=${data.id}`}>
+                                            <img src={products_data[data.product][data.id - 1].img} alt="" className="object-cover w-full h-full"/>
+                                        </Link>
                                     </div>
                                     <div className="w-full px-4 mb-6 md:w-96 xl:mb-0">
                                         <a className="block mb-5 text-xl font-medium dark:text-gray-400 hover:underline" href="/cart">
@@ -138,24 +178,24 @@ const Cart = () => {
                                     <div className="w-full px-4 mt-6 mb-6 xl:w-auto xl:mb-0 xl:mt-0">
                                         <div className="flex items-center">
                                             <h2 className="mr-4 font-medium dark:text-gray-400">Qty:{data.count}</h2>
-                                            {/* <div className="inline-flex items-center px-4 font-semibold text-gray-500 border border-gray-300 rounded-md dark:bg-gray-800 dark:border-gray-700 ">
-                                                <button onClick={decCart(data.product, data.id)} className="py-2 pr-2 border-r border-gray-300 dark:border-gray-600 dark:text-gray-400 hover:text-gray-700">
+                                            <div className="inline-flex items-center px-4 font-semibold text-gray-500 border border-gray-300 rounded-md dark:bg-gray-800 dark:border-gray-700 ">
+                                                {data.count > 1 && <button onClick={()=>decCart(data.product, data.id)} className="py-2 pr-2 border-r border-gray-300 dark:border-gray-600 dark:text-gray-400 hover:text-gray-700">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-dash" viewBox="0 0 16 16">
                                                         <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"></path>
                                                     </svg>
-                                                </button>
-                                                <input type="number" className="w-12 px-2 py-4 text-center border-0 rounded-md dark:bg-gray-800 bg-gray-50 dark:text-gray-400" placeholder="1"/>
-                                                <button onClick={incrCart(data.product, data.id)} className="py-2 pl-2 border-l border-gray-300 dark:border-gray-600 hover:text-gray-700 dark:text-gray-400">
+                                                </button>}
+                                                <div className='text-gray-300'>{data.count}</div>
+                                                <button onClick={()=>incrCart(data.product, data.id)} className="py-2 pl-2 border-l border-gray-300 dark:border-gray-600 hover:text-gray-700 dark:text-gray-400">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-plus" viewBox="0 0 16 16">
                                                         <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z">
                                                         </path>
                                                     </svg>
                                                 </button>
-                                            </div> */}
+                                            </div>
                                         </div>
                                     </div>
                                     <div className="w-full px-4 mb-6 xl:w-auto xl:mb-0 xl:mt-0">
-                                        <button onClick = {remove(data.product, data.id)} className="inline-block px-8 py-4 font-bold text-white uppercase bg-primary rounded-md hover:bg-primary/40" href="/cart">Remove</button>
+                                        <button onClick = {()=>remove(data.product, data.id)} className="inline-block px-8 py-4 font-bold text-white uppercase bg-primary rounded-md hover:bg-primary/40" href="/cart">Remove</button>
                                     </div>
                                     <div className="w-full px-4 xl:w-auto">
                                         <span className="text-xl font-medium text-primary ">

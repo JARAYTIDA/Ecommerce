@@ -60,16 +60,16 @@ export const signup = async (req, res) => {
         };
         
           // Send mail
-        // transporter.sendMail(mailOptions, (error, info) => {
-        //     if (error) {
-        //         console.log('Error occurred:', error.message);
-        //         res.status(500).send('Error sending email');
-        //         return;
-        //     }
-        //     console.log('Email sent successfully!');
-        //     console.log('Message ID:', info.messageId);
-        //     res.send('Email sent successfully!');
-        // });
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.log('Error occurred:', error.message);
+                res.status(500).send('Error sending email');
+                return;
+            }
+            console.log('Email sent successfully!');
+            console.log('Message ID:', info.messageId);
+            res.send('Email sent successfully!');
+        });
         
         res.status(200).json({user_id : newUser.user_id, email_id: newUser.email_id});
     } catch (error) {
@@ -175,6 +175,7 @@ function filterObjectsByProperties(array, properties) {
 
 export const addToCart = async (req, res) => {
     const data = req.query;
+    console.log(data);
     const product = data.product;
     const id = data.id;
     const count = data.count;
@@ -193,6 +194,9 @@ export const addToCart = async (req, res) => {
                     product : product,
                     id : id,
                     count : parseInt(cnt),
+                    price : parseInt(data.price),
+                    img : data.img,
+                    name : data.name,
                 } } }
             )
             res.status(200).json({message : "cart updated successfully"})
@@ -325,6 +329,24 @@ export const getCart = async (req, res) => {
         console.log(e);
         res.status(401).json({message : e})
     }
+}
+
+export const calculate = async (req, res) => {
+    const {email} = req.query;
+
+    try {
+        const find_user = await userDetails.find({email_id : email});
+        let total = 0;
+    
+        for(let i = 0; i < find_user[0].cart.length; i++){
+            total += find_user[0].cart[i].price*find_user[0].cart[i].count;
+        }
+        res.status(200).json({price : total});
+        
+    } catch (error) {
+        res.status(402).json({message:error.message})
+    }
+
 }
 
 // export const addToCart = async (req, res) => {

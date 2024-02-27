@@ -1,6 +1,6 @@
 import express from 'express'
 
-import { signin, signup, getUser, sendEmail, addToCart, getCart, getCartSize, decCart, incrCart, emptyCart, remove } from '../controllers/authentication_fun.js'
+import { signin, signup, getUser, sendEmail, addToCart, getCart, getCartSize, decCart, incrCart, emptyCart, remove, calculate } from '../controllers/authentication_fun.js'
 import { pay } from '../controllers/stripe_fun.js';
 
 const auth_routes = express.Router();
@@ -17,5 +17,6 @@ auth_routes.get("/incr-cart", incrCart)
 auth_routes.get('/empty', emptyCart)
 auth_routes.get('/remove', remove)
 auth_routes.post('/pay', pay)
+auth_routes.get('/total', calculate)
 
 export default auth_routes;

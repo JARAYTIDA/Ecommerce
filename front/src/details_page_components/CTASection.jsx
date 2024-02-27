@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-
+import { products_data } from '../assets/data/all_data';
 
 const CTASection = ({cartCounter, setCartCounter, id, product}) => {
 
@@ -15,7 +15,7 @@ const CTASection = ({cartCounter, setCartCounter, id, product}) => {
     else{
       try {
         // console.log(productCounter);
-          const response = await fetch(`http://localhost:5000/auth/add-to-cart?email=${email}&id=${id}&product=${product}&count=${productCounter}`);
+          const response = await fetch(`http://localhost:5000/auth/add-to-cart?email=${email}&id=${id}&product=${product}&count=${productCounter}&price=${products_data[product][id-1].price1}&img=${products_data[product][id-1].img}&name=${products_data[product][id-1].name}`);
           if (response.ok) {
               const data = await response.json();
               console.log(data); // Response from the server
