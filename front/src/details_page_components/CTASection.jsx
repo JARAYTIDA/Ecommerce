@@ -15,18 +15,17 @@ const CTASection = ({cartCounter, setCartCounter, id, product}) => {
     else{
       try {
         // console.log(productCounter);
-          const response = await fetch(`http://localhost:5000/auth/add-to-cart?email=${email}&id=${id}&product=${product}&count=${productCounter}&price=${products_data[product][id-1].price1}&img=${products_data[product][id-1].img}&name=${products_data[product][id-1].name}`);
+          const response = await fetch(`https://ecommerce-lcv2.onrender.com/auth/add-to-cart?email=${email}&id=${id}&product=${product}&count=${productCounter}&price=${products_data[product][id-1].price1}&img=${products_data[product][id-1].img}&name=${products_data[product][id-1].name}`);
           if (response.ok) {
               const data = await response.json();
               console.log(data); // Response from the server
-              window.localStorage.setItem('email_id', data[0].email_id)
+              window.location.reload();
           } else {
               console.error('Failed to submit form');
           }
       } catch (error) {
           console.error('Error:', error);
       }
-      window.location.reload();
     }
 }
   const [productCounter, setProductCounter] = useState(0);

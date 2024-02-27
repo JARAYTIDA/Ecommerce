@@ -7,7 +7,7 @@ const ForgotPass = () => {
     const handlSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await fetch('http://localhost:5000/reset/reset-mail', {
+            const response = await fetch('https://ecommerce-lcv2.onrender.com/reset/reset-mail', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -43,7 +43,7 @@ const ForgotPass = () => {
                                 </div>
                                 <button type="submit" className="w-full text-white bg-yellow-600 hover:bg-yellow-600-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-yellow-600-600 dark:hover:bg-yellow-600-700 dark:focus:ring-primary-800">Reset Password</button>
                                 <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-                                    Don’t have an account yet? <Link href="/signup" className="font-medium text-yellow-600 hover:underline dark:text-yellow-600-500">Sign up</Link>
+                                    Don’t have an account yet? <Link to="/signup" className="font-medium text-yellow-600 hover:underline dark:text-yellow-600-500">Sign up</Link>
                                 </p>
                             </form>
                         </div>

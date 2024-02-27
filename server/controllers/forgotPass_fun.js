@@ -10,6 +10,7 @@ const HOST_NAME = process.env.HOST_NAME;
 const ADMIN_EMAIL = process.env.ADMIN_EMAIL;
 const EMAIL_PASS = process.env.EMAIL_PASS;
 const ADMIN_NAME = process.env.ADMIN_NAME;
+const REDIRECT_BASE_URL = process.env.REDIRECT_BASE_URL;
 
 const transporter = nodemailer.createTransport({
     host: HOST_NAME,
@@ -75,7 +76,7 @@ export const send_forgotPass_mail = async (req, res) => {
         <body>
         
         <h2>click this link to reset your password</h2>
-        <p>  http://localhost:3000/reset-pass/${find_user[0].forgotPass} </p>
+        <p>  ${REDIRECT_BASE_URL}/reset-password/${find_user[0].forgotPass} </p>
         </body>
         </html>
     `
@@ -117,7 +118,7 @@ export const send_confirmOrder_mail = async (req, res) => {
         order_html += `                
         <tr>
         <td>${find_user[0].cart[i].name}</td>
-        <td>₹${find_user[0].cart[i].count}</td>
+        <td>${find_user[0].cart[i].count}</td>
         <td>₹${find_user[0].cart[i].price}</td>
         <td>₹${find_user[0].cart[i].price*find_user[0].cart[i].count}</td>
         </tr>
@@ -182,6 +183,64 @@ export const send_confirmOrder_mail = async (req, res) => {
                 </tr>
             </tfoot>
         </table>
+    </body>
+</html>
+
+    `
+    const mailOptions = {
+        from: `"${ADMIN_NAME}" <${ADMIN_EMAIL}>`,
+        to: `${email}`,
+        subject: 'Dear customer, here is you order summary',
+        html: htmlContent,
+    };
+
+      // Send mail
+    try{
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.log('Error occurred:', error.message);
+                res.status(500).send('Error sending email');
+                return;
+            }
+            console.log('Email sent successfully!');
+            console.log('Message ID:', info.messageId);
+            res.status(200).json({message:'Email sent successfully!'});
+        });
+    } catch(err){
+        console.log(err);
+        res.status(401).json({message : e.message});
+    }
+}
+
+export const send_cancel_mail = async (req, res) => {
+    console.log("sending email ......")
+    // const data = req.body;
+    const {email} = req.query;
+    const find_user = await userDetails.find({email_id : email});
+    const htmlContent = `
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Order Summary</title>
+        <style>
+            table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+            th, td {
+                padding: 8px;
+                text-align: left;
+                border-bottom: 1px solid #ddd;
+            }
+            th {
+                background-color: #f2f2f2;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Dear, ${find_user[0].user_id} .. your order has been cancelled</h2>
     </body>
 </html>
 

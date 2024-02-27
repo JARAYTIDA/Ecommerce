@@ -9,7 +9,7 @@ const Profile = () => {
     const email = window.localStorage.getItem('email_id');
 
     const getProfile = async (email) => {
-        const response = await fetch(`http://localhost:5000/auth/get?email=${email}`);
+        const response = await fetch(`https://ecommerce-lcv2.onrender.com/auth/get?email=${email}`);
         if (response.ok) {
             const data = await response.json();
             // console.log(data);
@@ -36,7 +36,7 @@ const Profile = () => {
 
     const handleClick = () => {
         window.localStorage.removeItem('email_id');
-            window.location.href = 'http://localhost:3000/login';
+            window.location.href = 'https://ecommerce-lcv2.onrender.com/login';
     // Reload the page
             window.location.reload();
     }

@@ -3,7 +3,7 @@ import dotenv from 'dotenv'
 dotenv.config();
 
 
-const STRIPE_REDIRECT_BASE_URL = process.env.STRIPE_REDIRECT_BASE_URL;
+const REDIRECT_BASE_URL = process.env.REDIRECT_BASE_URL;
 
 const stripe_pay = Stripe(process.env.STRIPE_SECRET, {
     apiVersion: '2020-08-27',
@@ -60,8 +60,8 @@ export const pay = async(req,res)=>{
         payment_method_types:["card"],
         line_items:lineItems,
         mode:"payment",
-        success_url:`${STRIPE_REDIRECT_BASE_URL}/sucess?email=${email}`,
-        cancel_url:`${STRIPE_REDIRECT_BASE_URL}/cancel`,
+        success_url:`${REDIRECT_BASE_URL}/sucess?email=${email}`,
+        cancel_url:`${REDIRECT_BASE_URL}/cancel?email=${email}`,
     });
     // res.status(200).json({message : 'success'});
     res.json({id:session.id})

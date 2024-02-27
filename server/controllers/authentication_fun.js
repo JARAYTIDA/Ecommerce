@@ -13,6 +13,7 @@ const ADMIN_NAME = process.env.ADMIN_NAME;
 const SECRET_ENCRYPTION_TICKET = process.env.SECRET_ENCRYPTION_TICKET;
 const SECRET_ENCRYPTION_FORGOT_PASSWORD = process.env.SECRET_ENCRYPTION_FORGOT_PASSWORD;
 const JWT_SECRET = process.env.JWT_SECRET;
+const REDIRECT_BASE_URL = process.env.REDIRECT_BASE_URL
 
 const transporter = nodemailer.createTransport({
     host: HOST_NAME,
@@ -56,7 +57,7 @@ export const signup = async (req, res) => {
             from: `"${ADMIN_NAME}" <${ADMIN_EMAIL}>`,
             to: `${user.email_id}`,
             subject: 'Please Verify you account',
-            text: `please click on this link in order to verify you account  http://localhost:3000/verification?ticket=${ticket_gen_hash}  `,
+            text: `please click on this link in order to verify you account  ${REDIRECT_BASE_URL}/verification?ticket=${ticket_gen_hash}  `,
         };
         
           // Send mail

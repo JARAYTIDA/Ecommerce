@@ -19,4 +19,5 @@ auth_routes.get('/remove', remove)
 auth_routes.post('/pay', pay)
 auth_routes.get('/total', calculate)
 
+
 export default auth_routes;
