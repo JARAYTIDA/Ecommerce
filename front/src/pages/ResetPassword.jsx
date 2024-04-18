@@ -16,7 +16,7 @@ const ResetPassword = () => {
         }
         else{
             try {
-                const response = await fetch(`https://ecommerce-1-7a3c.onrender.com/reset/forgot?forgotPass=${forgotPass.data}`, {
+                const response = await fetch(`https://ecommerce-295o.onrender.com/reset/forgot?forgotPass=${forgotPass.data}`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

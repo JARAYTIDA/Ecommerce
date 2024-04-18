@@ -5,7 +5,7 @@ const Cancel = () => {
     const email = params.get('email');
     const sendOrderDetails = async () => {
         try {
-            const response = await fetch(`https://ecommerce-1-7a3c.onrender.com/reset/cencel?email=${email}`);
+            const response = await fetch(`https://ecommerce-295o.onrender.com/reset/cencel?email=${email}`);
             console.log(response);
         } catch (error) {
             console.error('Error:', error);

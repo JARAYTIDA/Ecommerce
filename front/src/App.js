@@ -6,7 +6,7 @@ import { Cart, Details, Details2, EmailVerificationAsk, ForgotPass, Home, Login,
 
 const App = () => {
   return (
-    <div className='dark:bg-gray-900'>
+    <div className='dark:bg-gray-900 w-full'>
       <Navbar/>
       <Routes>
         <Route path='/' element={<Home/>} />

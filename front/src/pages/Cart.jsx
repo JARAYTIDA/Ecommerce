@@ -14,7 +14,7 @@ const Cart = () => {
 
     const getPrice = async (email_id) => {
         try {
-            const response = await fetch(`https://ecommerce-1-7a3c.onrender.com/auth/total?email=${email_id}`);
+            const response = await fetch(`https://ecommerce-295o.onrender.com/auth/total?email=${email_id}`);
             // console.log(response);
             if (response.ok) {
                 const data = await response.json();
@@ -37,7 +37,7 @@ const Cart = () => {
     const getData = async (email_id) => {
         
         try {
-            const response = await fetch(`https://ecommerce-1-7a3c.onrender.com/auth/get-cart?email=${email_id}`);
+            const response = await fetch(`https://ecommerce-295o.onrender.com/auth/get-cart?email=${email_id}`);
             // console.log(response);
             if (response.ok) {
                 const data = await response.json();
@@ -76,7 +76,7 @@ const Cart = () => {
         const headers = {
             "Content-Type":"application/json"
         }
-        const response = await fetch(`https://ecommerce-1-7a3c.onrender.com/auth/pay?email=${email}`,{
+        const response = await fetch(`https://ecommerce-295o.onrender.com/auth/pay?email=${email}`,{
             method:"POST",
             headers:headers,
             body:JSON.stringify(body)
@@ -97,7 +97,7 @@ const Cart = () => {
 
     const incrCart = async (product, id) => {
         console.log('inc cart')
-        const response = await fetch(`https://ecommerce-1-7a3c.onrender.com/auth/incr-cart?product=${product}&id=${id}&email=${email}`)
+        const response = await fetch(`https://ecommerce-295o.onrender.com/auth/incr-cart?product=${product}&id=${id}&email=${email}`)
         try {
             if (response.ok) {
                 const data = await response.json();
@@ -116,7 +116,7 @@ const Cart = () => {
 
     const decCart = async (product, id) => {
         console.log('inc cart')
-        const response = await fetch(`https://ecommerce-1-7a3c.onrender.com/auth/dec-cart?product=${product}&id=${id}&email=${email}`)
+        const response = await fetch(`https://ecommerce-295o.onrender.com/auth/dec-cart?product=${product}&id=${id}&email=${email}`)
         try {
             if (response.ok) {
                 const data = await response.json();
@@ -136,7 +136,7 @@ const Cart = () => {
 
     const remove = async (product, id) => {
         console.log('dec cart')
-        const response = await fetch(`https://ecommerce-1-7a3c.onrender.com/auth/remove?product=${product}&id=${id}&email=${email}`)
+        const response = await fetch(`https://ecommerce-295o.onrender.com/auth/remove?product=${product}&id=${id}&email=${email}`)
         try {
             if (response.ok) {
                 const data = await response.json();

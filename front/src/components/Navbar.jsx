@@ -63,7 +63,7 @@ const Navbar = () => {
     
     const getCartData = async () => {
             try {
-                const response = await fetch(`https://ecommerce-1-7a3c.onrender.com/auth/cart-size?email=${email}`);
+                const response = await fetch(`https://ecommerce-295o.onrender.com/auth/cart-size?email=${email}`);
                 if (response.ok) {
                     const data = await response.json();
                     console.log(data); // Response from the server

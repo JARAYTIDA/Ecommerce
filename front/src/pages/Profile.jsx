@@ -9,7 +9,7 @@ const Profile = () => {
     const email = window.localStorage.getItem('email_id');
 
     const getProfile = async (email) => {
-        const response = await fetch(`https://ecommerce-1-7a3c.onrender.com/auth/get?email=${email}`);
+        const response = await fetch(`https://ecommerce-295o.onrender.com/auth/get?email=${email}`);
         if (response.ok) {
             const data = await response.json();
             // console.log(data);
