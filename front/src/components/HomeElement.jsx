@@ -52,7 +52,7 @@ const HomeElement = () => {
     return (
         <>
             <div className='container py-2 '>
-                <div className='overflow-hidden rounded-3xl min-h-[550px] sm:min-h-[650px] hero-bg-color flex justify-center items-center'>
+                <div className='overflow-hidden rounded-3xl min-h-[550px] sm:min-h-[650px] flex justify-center items-center'>
                     <div className='container pb-8 sm:pb-0'>
                         <Slider {...settings}>
                             {
@@ -63,7 +63,7 @@ const HomeElement = () => {
                                             <div className='flex flex-col justify-center gap-4 sm:pl-3 pt-12 sm:pt-0 text-center sm:text-left order-2 sm:order-1 relative z-10 '>
                                                 <h1 className='text-2xl sm:text-3xl lg:text-4xl font-bold'>{data.subtitle}</h1>
                                                 <h1 className='text-5xl sm:text-6xl lg:text-7xl font-bold'>{data.title}</h1>
-                                                <h1 className='text-5xl uppercase text-white dark:text-white/5 sm:text-[80px] md:text-[100px] xl:text-[150px] font-bold'>{data.title2}</h1>
+                                                <h1 className='text-5xl uppercase text-black sm:text-[80px] md:text-[100px] xl:text-[150px] font-bold'>{data.title2}</h1>
                                                 <div>
                                                     <Link to={`/products/${data.product}`}>
                                                         < HomeElementButton text='Shop Now' bgColor='bg-primary' textColor='text-white' />

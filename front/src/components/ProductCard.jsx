@@ -17,8 +17,8 @@ const ProductCard = ({data}) => {
                         </div>
                     </div>
                     <div className='landing-7'>
-                        <h1 className='text-xl font-semibold dark:text-gray-200'>{data.title}</h1>
-                        <h2 className='font-bold dark:text-gray-200'>{data.price} $</h2>
+                        <h1 className='text-xl font-semibold '>{data.title}</h1>
+                        <h2 className='font-bold '>{data.price} $</h2>
                     </div>
                 </div>
             ))}

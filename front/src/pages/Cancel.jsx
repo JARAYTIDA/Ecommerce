@@ -15,7 +15,7 @@ const Cancel = () => {
         sendOrderDetails();
     }, [])
     return (
-        <div className="bg-gray-200 dark:bg-gray-900 h-screen">
+        <div className="bg-gray-200 h-screen">
             <div className="bg-white p-6  md:mx-auto">
                 <div className="text-center">
                     <h3 className="md:text-2xl text-base text-gray-900 font-semibold text-center">Payment Cancelled!</h3>

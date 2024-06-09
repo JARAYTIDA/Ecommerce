@@ -23,7 +23,7 @@ const FooterLinks = [
 
 const Footer = () => {
     return (
-        <div className='dark:bg-gray-950 bg-gray-200'>
+        <div className=' bg-gray-200'>
             <div className="container">
                 <div className="grid md:grid-cols-3 pb-20 pt-5">
                     <div className='py-8 px-4'>
@@ -37,12 +37,12 @@ const Footer = () => {
 
                     <div className='col-span-2 grid grid-cols-2 sm:grid-cols-3 md:pl-10'>
                         <div className='px-4 py-8'>
-                            <h1 className='dark:text-gray-300 text-xl font-bold sm:text-left mb-3'>Important Links</h1>
+                            <h1 className='text-xl font-bold sm:text-left mb-3'>Important Links</h1>
                             <ul className='space-y-3'>
                                 {
                                     FooterLinks.map((data, index) => (
                                         <li key = {index}>
-                                            <Link to={data.link} className='text-gray-500 hover:text-black dark:hover:text-gray-300 duration-300'>{data.title}</Link>
+                                            <Link to={data.link} className='text-gray-500 hover:text-black duration-300'>{data.title}</Link>
                                         </li>
                                     ))
                                 }
@@ -50,19 +50,19 @@ const Footer = () => {
                         </div>
 
                         <div className='px-4 py-8'>
-                            <h1 className='dark:text-gray-300 text-xl font-bold sm:text-left mb-3'>Quick Links</h1>
+                            <h1 className=' text-xl font-bold sm:text-left mb-3'>Quick Links</h1>
                             <ul className='space-y-3'>
                                 {
                                     FooterLinks.map((data, index) => (
                                         <li key = {index}>
-                                            <Link to={data.link} className='text-gray-500 hover:text-black dark:hover:text-gray-300 duration-300'>{data.title}</Link>
+                                            <Link to={data.link} className='text-gray-500 hover:text-black duration-300'>{data.title}</Link>
                                         </li>
                                     ))
                                 }
                             </ul>
                         </div>
                         
-                        <div className='px-4 py-8 col-span-2 sm:col-auto dark:text-white'>
+                        <div className='px-4 py-8 col-span-2 sm:col-auto '>
                             <h1 className='text-xl font-bold sm:text-left mb-3 '>Address</h1>
                             <div>
                                 <div className='flex items-center gap-3 mt-6'>

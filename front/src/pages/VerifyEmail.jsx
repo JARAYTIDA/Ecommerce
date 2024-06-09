@@ -27,8 +27,8 @@ const VerifyEmail = () => {
     }
 
   return (
-    <div className="flex items-center justify-center min-h-screen p-5 bg-gray-200 dark:bg-gray-800 min-w-screen">
-    <div className="max-w-xl p-8 text-center text-gray-800 bg-white dark:bg-gray-300 shadow-xl lg:max-w-3xl rounded-3xl lg:p-12">
+    <div className="flex items-center justify-center min-h-screen p-5 bg-gray-200  min-w-screen">
+    <div className="max-w-xl p-8 text-center text-gray-800 bg-white shadow-xl lg:max-w-3xl rounded-3xl lg:p-12">
         <h3 className="text-2xl">Thanks for signing up on our website !</h3>
         <div className="flex justify-center">
             <svg xmlns="http://www.w3.org/2000/svg" className="w-24 h-24 text-green-400" fill="none"

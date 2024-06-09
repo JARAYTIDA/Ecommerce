@@ -2,8 +2,8 @@ import React from 'react'
 
 const EmailVerificationAsk = () => {
   return (
-    <div class="flex items-center justify-center min-h-screen p-5 bg-gray-200 dark:bg-gray-800 min-w-screen">
-            <div class="max-w-xl p-8 text-center text-gray-800 bg-white dark:bg-gray-300 shadow-xl lg:max-w-3xl rounded-3xl lg:p-12">
+    <div class="flex items-center justify-center min-h-screen p-5 bg-gray-200min-w-screen">
+            <div class="max-w-xl p-8 text-center text-gray-800 bg-white shadow-xl lg:max-w-3xl rounded-3xl lg:p-12">
                 <h3 class="text-2xl">Thanks for signing up on our website !</h3>
                 <div class="flex justify-center">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-24 h-24 text-green-400" fill="none"

@@ -1,12 +1,4 @@
 import { useState, useEffect } from "react"
-import Img1 from './images/image-product-1-thumbnail.jpg'
-import Img2 from './images/image-product-2-thumbnail.jpg'
-import Img3 from './images/image-product-3-thumbnail.jpg'
-import Img4 from './images/image-product-4-thumbnail.jpg'
-
-const thumbnails = [
-    'https://rukminim2.flixcart.com/image/128/128/xif0q/headphone/x/i/e/-original-imagt5cwjjdytpfv.jpeg?q=70&crop=false','https://rukminim2.flixcart.com/image/128/128/xif0q/headphone/x/i/e/-original-imagt5cwjjdytpfv.jpeg?q=70&crop=false', 'https://rukminim2.flixcart.com/image/128/128/xif0q/headphone/x/i/e/-original-imagt5cwjjdytpfv.jpeg?q=70&crop=false', 'https://rukminim2.flixcart.com/image/128/128/xif0q/headphone/x/i/e/-original-imagt5cwjjdytpfv.jpeg?q=70&crop=false'
-]
 
 const Carousel = ({ children: slides, autoSlide = false, autoSlideInterval = 3000,data, id}) => {
   const [curr, setCurr] = useState(0)

@@ -632,3 +632,11 @@ export const products_data = {
         },
     ]
 }
+
+export const server = {
+    link: "https://ecommerce-295o.onrender.com"
+}
+
+export const frontend = {
+    link: ""
+}

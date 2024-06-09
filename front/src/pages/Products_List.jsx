@@ -9,7 +9,7 @@ const Products_List = () => {
     return (
 <div className="font-[sans-serif]">
       <div className="p-4 mx-auto lg:max-w-6xl max-w-xl md:max-w-full">
-        <h2 className="text-4xl font-extrabold dark:text-gray-200 text-gray-800 mb-12">{products} store</h2>
+        <h2 className="text-4xl font-extrabold  text-gray-800 mb-12">{products} store</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           
           {
